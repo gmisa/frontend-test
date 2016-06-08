@@ -4,7 +4,6 @@
 
 var gulp = require('gulp');
 var config = require('../config');
-var gutil = require('gulp-util');
 
 gulp.task('copy-font-bootstrap', ['clean', 'copy-index', 'optimize-images'], function () {
     return gulp.src(config.fonts.bootstrap.src + '/**/*.*')

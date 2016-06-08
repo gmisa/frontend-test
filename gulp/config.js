@@ -36,7 +36,6 @@ module.exports = {
         'vendor': {
             scripts: [
                 './bower_components/modernizr/modernizr.js',
-                './bower_components/respond/src/respond.js',
                 './bower_components/bootstrap/dist/js/bootstrap.js',
             ],
             css: [
