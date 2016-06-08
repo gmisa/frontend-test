@@ -16,7 +16,7 @@ gulp.task('development', [
     'concat-common-js-dev',
     'concat-common-css-dev',
     'concat-angular-bundle-dev',
-    //'templateCache-local',
+    'templateCache-dev',
     'rev-collector-css-dev',
     'rev-collector-html-dev'
 ]);

@@ -25,18 +25,19 @@ module.exports = {
         dest: dest + "/img"
     },
     css: {
-        src: src + '/css/**/*.css',
+        src: src + '/styles/**/*.css',
         dest: dest + '/styles'
     },
     js: {
-        src: src + '/js/**/*.js',
+        src: src + '/scripts',
         dest: dest + '/scripts'
     },
     concat: {
         'vendor': {
             scripts: [
                 './bower_components/modernizr/modernizr.js',
-                './bower_components/bootstrap/dist/js/bootstrap.js',
+                './bower_components/jquery/dist/jquery.js',
+                './bower_components/bootstrap/dist/js/bootstrap.js'
             ],
             css: [
                 './bower_components/animate.css/animate.css',

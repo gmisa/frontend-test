@@ -17,7 +17,7 @@ gulp.task('production', [
     'concat-common-js-prod',
     'concat-common-css-prod',
     'concat-angular-bundle-prod',
-    //'templateCache-local',
+    'templatecache-prod',
     'rev-collector-css-prod',
     'rev-collector-html-prod'
 ]);
