@@ -1,0 +1,19 @@
+{
+  "name": "frontend-test",
+  "version": "0.0.1",
+  "devDependencies": {
+    "del": "^2.2.0",
+    "glob": "^7.0.3",
+    "gulp-clean-css": "^2.0.10",
+    "gulp-concat": "^2.6.0",
+    "gulp-imagemin": "^3.0.1",
+    "gulp-less": "^3.1.0",
+    "gulp-newer": "^1.2.0",
+    "gulp-rev": "^7.0.0",
+    "gulp-rev-collector": "^1.0.3",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-util": "^3.0.7",
+    "require-dir": "^0.3.0"
+  }
+}
