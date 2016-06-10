@@ -16,18 +16,28 @@
     function ProductCatalogController($scope, productCatalogService) {
         var vm = this;
 
-        var productsApi = productCatalogService.productsApi();
+        var productsCatalog = productCatalogService.getProductCatalog();
+        var productTypes = productCatalogService.getProductTypes();
 
         vm.init = function () {
-            productsApi.get()
+            productsCatalog.get()
                 .$promise
                 .then(getProductsSuccess);
+            
+            productTypes.query()
+                .$promise
+                .then(getProductTypesSuccess);
         };
 
         function getProductsSuccess(results) {
             vm.products = results.documents;
         }
 
+
+        function getProductTypesSuccess(results) {
+            vm.productTypes = results;
+        }
+        
         vm.init();
     }
 

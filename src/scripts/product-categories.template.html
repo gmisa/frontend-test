@@ -1,0 +1,28 @@
+<div class="product-categories">
+    <div class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm">
+        <a class="navmenu-brand visible-md visible-lg icon-logo dw navbar-brand" href="http://shop.fender.com/en-US/">
+            <img src="http://demandware.edgesuite.net/aart_prd/on/demandware.static/Sites-Fender-Site/-/default/dwa3133224/images/fender-logo.png" alt="Fender">
+        </a>
+
+        <h5>CATEGORIES</h5>
+        <ul class="nav navmenu-nav product-filters" >
+            <li ng-repeat="productType in vm.categories">
+                <input type="checkbox"><label>{{productType.productType}}</label>
+                <ul class="product-filters">
+                    <li ng-repeat="productSubType in productType.subTypes">
+                        <label><input type="checkbox">{{productSubType.productSubType}}</label>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="navbar navbar-default navbar-fixed-left hidden-md hidden-lg">
+        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".navmenu">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+</div>
+

@@ -9,7 +9,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var rev = require('gulp-rev');
 var TEMPLATE_HEADER = 'angular.module("fenderApp").run(["$templateCache", function($templateCache) {';
 
-gulp.task('templateCache-dev', ['clean', 'optimize-images', 'copy-font-bootstrap', 'copy-font-fontawesome', 'less', 'concat-vendor-js-dev', 'concat-vendor-css-dev', 'concat-common-js-prod', 'concat-common-css-dev', 'concat-angular-bundle-dev'], function () {
+gulp.task('templateCache-dev', ['clean', 'optimize-images', 'copy-font-bootstrap', 'copy-font-fontawesome', 'less', 'concat-vendor-js-dev', 'concat-vendor-css-dev', 'concat-common-js-dev', 'concat-common-css-dev', 'concat-angular-bundle-dev'], function () {
     return gulp.src(config.js.src + "/*.html")
         .pipe(templateCache('templates.js', { templateHeader: TEMPLATE_HEADER }))
         .pipe(rev())

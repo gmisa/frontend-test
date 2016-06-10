@@ -10,8 +10,11 @@
 
     function productCatalogService ($resource) {
         return {
-            productsApi: function () {
-                return $resource('/api/:id');
+            getProductCatalog: function () {
+                return $resource('/api/products/:id');
+            },
+            getProductTypes: function() {
+                return $resource('/api/producttypes');
             }
         }
     }

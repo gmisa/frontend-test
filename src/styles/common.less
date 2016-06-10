@@ -1,3 +1,222 @@
+@primary-background-color: #1e1e1e;
+@secondary-background-color: #fff;
+@header-color: #000;
+@brand-background-color: #d52b1e;
+
+.site-nav-menu-link() {
+  font-family: opensans,Arial,Helvetica,sans-serif;
+  color: @secondary-background-color;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+  &hover {
+    background-color: transparent;
+  }
+}
+
+body {
+  background-color: @primary-background-color;
+  margin-left: 8px;
+  margin-right: 8px;
+  padding: 50px 0 0 0;
+}
+
+html, body {
+  height: 100%;
+}
+
 .product-list {
   list-style-type: none;
+  padding-left: 0;
+  background-color: @secondary-background-color;
+
+  .product-list-item {
+    text-align: center;
+    height: 300px;
+    padding: 100px;
+    img {
+      max-height: 100px;
+      margin-bottom: 30px;
+    }
+    h4 {
+      color: @primary-background-color;
+      font-family: opensans, Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .product-image {
+      height: 150px;
+      text-align: center;
+    }
+  }
+}
+
+.product-filters {
+  list-style-type: none;
+  padding-left: 20px;
+  li {
+    padding-bottom: 10px;
+    label {
+      color: @secondary-background-color;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+    input {
+      margin-right: 5px;
+    }
+
+  }
+}
+
+.product-categories {
+  .navmenu-brand {
+    margin-left: 8px;
+  }
+}
+
+.icon-logo {
+  display: block;
+  width: 90px;
+  height: 90px;
+  background-color: @brand-background-color;
+  padding: 5px;
+  img {
+    margin-top: 20px;
+  }
+}
+
+.navbar {
+  background-color: @header-color;
+}
+
+.navbar-inverse {
+  .navbar-nav {
+    padding: 20px 10px 0 10px;
+    margin-left: 20px;
+    li {
+      min-width: 110px;
+      a {
+        .site-nav-menu-link();
+      }
+    }
+  }
+}
+
+.main-menu {
+  padding-top: 25px;
+  a {
+    .site-nav-menu-link();
+  }
+}
+
+footer {
+  text-align: center;
+  color: @secondary-background-color;
+  font-size: 13px;
+  section {
+    padding: 60px;
+  }
+}
+
+.main-content {
+     background-color: @secondary-background-color
+}
+
+.nav li > a:focus {
+  background-color: none !important;
+}
+
+@media screen and (max-width: 992px) {
+
+  .navbar-inverse {
+    .navbar-nav {
+      margin-left: 0;
+    }
+  }
+}
+
+header {
+  min-height: 90px;
+  background-color: @primary-background-color;
+}
+
+.navmenu  {
+  background-color: @primary-background-color;
+  h5 {
+    margin: 40px 0 0 20px;
+    color: @secondary-background-color;
+  }
+}
+
+.navmenu-brand {
+  margin: 0;
+}
+
+.nav.navmenu-nav {
+  margin-top: 40px;
+}
+
+.navmenu {
+  border: none;
+  padding-top: 50px;
+}
+
+.navbar {
+  display: block;
+  text-align: center;
+}
+.navbar-brand {
+  display: inline-block;
+  float: none;
+}
+.navbar-toggle {
+  position: absolute;
+  float: left;
+  margin-left: 15px;
+}
+
+.container {
+  max-width: 100%;
+}
+
+.nav > li {
+  display: inline-block;
+}
+
+@media screen and (max-width: 992px) {
+
+  body {
+    padding: 0;
+  }
+  .navbar {
+    border-color: transparent;
+    background-color: transparent;
+
+  }
+}
+
+@media (min-width: 1px) {
+  .navbar-toggle {
+    display: block !important;
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    padding: 0 0 0 300px;
+  }
+  .navmenu {
+    padding-top: 0;
+  }
+  .navbar {
+    display: none !important; /* IE8 fix */
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 100%;
+  }
 }

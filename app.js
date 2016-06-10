@@ -6,6 +6,7 @@ var express = require('express');
 var app = express();
 var fs = require('fs');
 var products = require('./products.json');
+var _ = require('underscore');
 
 var port = process.env.PORT || 5000;
 
@@ -24,16 +25,47 @@ app.get('/', function(req, res) {
     });
 });
 
-app.get('/api', function(req, res) {
+app.get('/api/products', function(req, res) {
     res.send(products);
 });
 
-app.get('/api/:id', function(req, res) {
+app.get('/api/products/:id', function(req, res) {
     var id = req.params.id;
     
     var product = products.documents.filter(function(item) {
-        return item.productNo == id;
+        return item.productNo === id;
     });
     
     res.send(product)
+});
+
+app.get('/api/producttypes', function(req, res) {
+    var productTypes = _.chain(products.documents)
+    .map(function(item) {
+        return _.pick(item, 'prodTypeId', 'productType');
+    })
+    .indexBy('prodTypeId').values()
+    .value();
+
+    _.each(products.documents, function(element, index, list){
+        var subType = {};
+        subType['prodSubTypeId'] = element.prodSubTypeId;
+        subType['productSubType']  = element.productSubType;
+
+        var prodType = _.find(productTypes, function(item) {
+            return item.prodTypeId === element.prodTypeId;
+        });
+
+        if (prodType) {
+            if (!prodType.subTypes) {
+                prodType.subTypes = [];
+            }
+
+            if (!_.findWhere(prodType.subTypes, {'prodSubTypeId': subType.prodSubTypeId})) {
+                prodType.subTypes.push(subType);
+            }
+        }
+    });
+
+    res.send(productTypes);
 });

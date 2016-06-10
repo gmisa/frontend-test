@@ -14,7 +14,7 @@ gulp.task('rev-collector-css-dev', ['clean','optimize-images', 'copy-font-bootst
         .pipe( gulp.dest(config.css.dest) );
 });
 
-gulp.task('rev-collector-css-prod', ['clean','optimize-images', 'copy-font-bootstrap', 'copy-font-fontawesome', 'less','concat-vendor-js-prod', 'concat-vendor-css-prod', 'concat-common-js-prod', 'concat-common-css-prod', 'concat-angular-bundle-prod', 'templateCache-dev'], function () {
+gulp.task('rev-collector-css-prod', ['clean','optimize-images', 'copy-font-bootstrap', 'copy-font-fontawesome', 'less','concat-vendor-js-prod', 'concat-vendor-css-prod', 'concat-common-js-prod', 'concat-common-css-prod', 'concat-angular-bundle-prod', 'templateCache-prod'], function () {
     return gulp.src([config.dist.src + '/rev/**/*.json', config.css.dest + '/*.css'])
         .pipe(revCollector({
             replaceReved: true
