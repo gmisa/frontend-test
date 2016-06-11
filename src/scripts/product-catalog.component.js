@@ -9,11 +9,12 @@
 
     module.component("productCatalog", {
         templateUrl: "product-catalog.component.html",
-        controller: ["$scope", "productCatalogService", ProductCatalogController],
+        controller: ["$scope", "$filter", "productCatalogService", ProductCatalogController],
         controllerAs: "vm"
     });
 
-    function ProductCatalogController($scope, productCatalogService) {
+
+    function ProductCatalogController($scope, $filter, productCatalogService) {
         var vm = this;
 
         var productsCatalog = productCatalogService.getProductCatalog();
@@ -23,14 +24,15 @@
             productsCatalog.get()
                 .$promise
                 .then(getProductsSuccess);
-            
-            productTypes.query()
-                .$promise
-                .then(getProductTypesSuccess);
         };
 
         function getProductsSuccess(results) {
-            vm.products = results.documents;
+            productCatalogService.products = results.documents;
+            vm.products = productCatalogService.products;
+
+            productTypes.query()
+                .$promise
+                .then(getProductTypesSuccess);
         }
 
 

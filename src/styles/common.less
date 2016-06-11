@@ -1,18 +1,5 @@
-@primary-background-color: #1e1e1e;
-@secondary-background-color: #fff;
-@header-color: #000;
-@brand-background-color: #d52b1e;
-
-.site-nav-menu-link() {
-  font-family: opensans,Arial,Helvetica,sans-serif;
-  color: @secondary-background-color;
-  font-size: 12px;
-  text-transform: uppercase;
-  font-weight: 700;
-  &hover {
-    background-color: transparent;
-  }
-}
+@import '_colors.less';
+@import '_mixins.less';
 
 body {
   background-color: @primary-background-color;
@@ -28,7 +15,9 @@ html, body {
 .product-list {
   list-style-type: none;
   padding-left: 0;
+  padding-bottom: 100px;
   background-color: @secondary-background-color;
+  min-height: 560px;
 
   .product-list-item {
     text-align: center;
@@ -73,6 +62,7 @@ html, body {
 .product-categories {
   .navmenu-brand {
     margin-left: 8px;
+    &:hover, &:active, &:visited { background-color: @logo-background-color; }
   }
 }
 
@@ -87,8 +77,12 @@ html, body {
   }
 }
 
-.navbar {
-  background-color: @header-color;
+.nav li > a:focus {
+  background-color: @primary-background-color;
+}
+
+.navmenu.canvas-slid {
+  background-color: @darkest-color;
 }
 
 .navbar-inverse {
@@ -98,21 +92,35 @@ html, body {
     li {
       min-width: 110px;
       a {
-        .site-nav-menu-link();
+        .site-nav-menu-link;
       }
     }
   }
 }
 
-.main-menu {
+.nav.main-menu {
   padding-top: 25px;
-  a {
-    .site-nav-menu-link();
+  li {
+    a {
+      .site-nav-menu-link;
+      &:hover, &:active, &:visited {
+        background-color: @primary-background-color;
+        color: @hover-color;
+      }
+    }
   }
 }
 
+.filter-results__count {
+  padding-top: 20px;
+  padding-left: 20px;
+  text-transform: uppercase;
+  font-style: italic;
+  color: @alternate-text-color;
+}
 footer {
   text-align: center;
+  text-transform: uppercase;
   color: @secondary-background-color;
   font-size: 13px;
   section {
@@ -124,17 +132,9 @@ footer {
      background-color: @secondary-background-color
 }
 
-.nav li > a:focus {
-  background-color: none !important;
-}
-
-@media screen and (max-width: 992px) {
-
-  .navbar-inverse {
-    .navbar-nav {
-      margin-left: 0;
-    }
-  }
+.no-results__text {
+  padding-top: 100px;
+  text-transform: uppercase;
 }
 
 header {
@@ -186,6 +186,14 @@ header {
 }
 
 @media screen and (max-width: 992px) {
+  .navbar-inverse {
+    .navbar-nav {
+      margin-left: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
 
   body {
     padding: 0;
@@ -193,7 +201,10 @@ header {
   .navbar {
     border-color: transparent;
     background-color: transparent;
+  }
 
+  .navmenu {
+    background-color: @primary-background-color;
   }
 }
 

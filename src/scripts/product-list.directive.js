@@ -14,7 +14,8 @@
         return {
             restrict: 'E',
             scope: {
-                products: '='
+                products: '=',
+                categories: '='
             },
             replace: true,
             controllerAs: 'vm',
@@ -25,13 +26,17 @@
         };
     }
 
-    function linkFn (scope, element, attrs, ctrl) {
+    function linkFn ($scope, element, attrs, ctrl) {}
 
-    }
-
-    function ProductListController() {
+    ProductListController.$inject = ["$scope", "$filter", "productCatalogService"];
+    function ProductListController($scope, $filter, productCatalogService) {
         var vm = this;
 
+        //refresh the product catalog view on change of filter
+        $scope.$watch('vm.products', function(newValue, oldValue) {
+            if (newValue) {
+                vm.filteredProducts = newValue; 
+            }
+        });
     }
-
 }());

@@ -1,8 +1,15 @@
 <ul class="product-list row">
-    <li class="product-list-item col-xs-12 col-md-6 col-lg-6" ng-repeat="product in vm.products">
+    <li class="filter-results__count" ng-if="vm.filteredProducts.length > 0"><strong>{{ vm.filteredProducts.length }} items displayed.</strong></li>
+    <li class="product-list-item col-xs-12 col-md-6 col-lg-6" ng-repeat="product in vm.filteredProducts">
         <div class="product-image">
             <img class="center-block img-responsive" ng-src="{{ product.images[0] }}" />
         </div>
         <h4>{{product.skuDisplayName_en.toString().split(',')[0]}}</h4>
     </li>
+    <li ng-if="vm.filteredProducts.length === 0">
+       <p class="no-results__text text-center">
+           <strong>Sorry, there are no results based on your selection.</strong>
+       </p>
+    </li>
 </ul>
+

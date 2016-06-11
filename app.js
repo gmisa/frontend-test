@@ -51,12 +51,14 @@ app.get('/api/producttypes', function(req, res) {
         var subType = {};
         subType['prodSubTypeId'] = element.prodSubTypeId;
         subType['productSubType']  = element.productSubType;
+        subType.selected = true;
 
         var prodType = _.find(productTypes, function(item) {
             return item.prodTypeId === element.prodTypeId;
         });
 
         if (prodType) {
+            prodType.selected = true;
             if (!prodType.subTypes) {
                 prodType.subTypes = [];
             }
@@ -69,3 +71,4 @@ app.get('/api/producttypes', function(req, res) {
 
     res.send(productTypes);
 });
+

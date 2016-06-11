@@ -38,7 +38,8 @@ module.exports = {
                 './bower_components/modernizr/modernizr.js',
                 './bower_components/jquery/dist/jquery.js',
                 './bower_components/bootstrap/dist/js/bootstrap.js',
-                './bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.js'
+                './bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.js',
+                './bower_components/lodash/dist/lodash.js'
             ],
             css: [
                 './bower_components/animate.css/animate.css',
