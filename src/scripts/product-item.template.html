@@ -1,0 +1,12 @@
+<section class="product-item">
+    <h1 class="product-name">{{ vm.info.productDisplayName_en }}</h1>
+
+    <p class="prod-sku">
+        Model #: <span>{{ vm.info.productNo }}</span>
+    </p>
+
+    <div class="product-primary__image">
+        <img class="img-responsive" ng-src="{{ vm.info.images[0] }}" alt="{{ vm.info.productDisplayName_en }}" />
+    </div>
+</section>
+

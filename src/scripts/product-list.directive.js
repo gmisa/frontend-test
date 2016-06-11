@@ -26,12 +26,14 @@
         };
     }
 
-    function linkFn ($scope, element, attrs, ctrl) {}
+    function linkFn ($scope, element, attrs, ctrl) {
+        angular.element('body').addClass('product-catalog');
+    }
 
-    ProductListController.$inject = ["$scope", "$filter", "productCatalogService"];
-    function ProductListController($scope, $filter, productCatalogService) {
+    ProductListController.$inject = ["$scope", "productCatalogService"];
+    function ProductListController($scope, productCatalogService) {
         var vm = this;
-
+        
         //refresh the product catalog view on change of filter
         $scope.$watch('vm.products', function(newValue, oldValue) {
             if (newValue) {

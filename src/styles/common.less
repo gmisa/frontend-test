@@ -1,20 +1,44 @@
 @import '_colors.less';
 @import '_mixins.less';
 
+html { font-size: 62.5%; }
+
 body {
+  font-family: 'Open Sans', sans-serif;
   background-color: @primary-background-color;
-  margin-left: 8px;
-  margin-right: 8px;
-  padding: 50px 0 0 0;
+  padding: 0;
+  &.product-catalog {
+    background-color: @primary-background-color;
+    padding: 50px 0 0 0;
+  }
+  &.product-info {
+    .container {
+      background-color: @secondary-background-color;
+      padding: 40px;
+    }
+  }
 }
 
 html, body {
   height: 100%;
 }
 
+body.product-catalog {
+  padding-left: 0;;
+  padding-top: 0;
+}
+
+.navmenu {
+  position: absolute;
+  width: 240px;
+}
+
+.navmenu-fixed-left {
+  top: 90px;
+}
+
 .product-list {
   list-style-type: none;
-  padding-left: 0;
   padding-bottom: 100px;
   background-color: @secondary-background-color;
   min-height: 560px;
@@ -29,8 +53,8 @@ html, body {
     }
     h4 {
       color: @primary-background-color;
-      font-family: opensans, Arial, Helvetica, sans-serif;
-      font-size: 14px;
+      font-family: 'Open Sans', sans-serif;;
+      font-size: 1.4rem;
       font-weight: 700;
       text-transform: uppercase;
     }
@@ -50,7 +74,7 @@ html, body {
     label {
       color: @secondary-background-color;
       text-transform: uppercase;
-      font-size: 11px;
+      font-size: 1.1rem;
     }
     input {
       margin-right: 5px;
@@ -62,7 +86,13 @@ html, body {
 .product-categories {
   .navmenu-brand {
     margin-left: 8px;
-    &:hover, &:active, &:visited { background-color: @logo-background-color; }
+    &:hover, &:active, &:visited {
+      color: @secondary-background-color;
+      background-color: @logo-background-color;
+    }
+    &:hover {
+      color: @hover-color;
+    }
   }
 }
 
@@ -75,6 +105,10 @@ html, body {
   img {
     margin-top: 20px;
   }
+}
+
+.product-list-item__info {
+  display: block;
 }
 
 .nav li > a:focus {
@@ -99,12 +133,17 @@ html, body {
 }
 
 .nav.main-menu {
-  padding-top: 25px;
+  padding-left: 40px;
+  margin-top: 20px;
+  background-color: @darkest-color;
   li {
     a {
       .site-nav-menu-link;
       &:hover, &:active, &:visited {
-        background-color: @primary-background-color;
+        background-color: @darkest-color;
+        color: @secondary-background-color;
+      }
+      &:hover {
         color: @hover-color;
       }
     }
@@ -113,7 +152,7 @@ html, body {
 
 .filter-results__count {
   padding-top: 20px;
-  padding-left: 20px;
+  padding-left: 80px;
   text-transform: uppercase;
   font-style: italic;
   color: @alternate-text-color;
@@ -122,14 +161,10 @@ footer {
   text-align: center;
   text-transform: uppercase;
   color: @secondary-background-color;
-  font-size: 13px;
+  font-size: 1.3rem;
   section {
     padding: 60px;
   }
-}
-
-.main-content {
-     background-color: @secondary-background-color
 }
 
 .no-results__text {
@@ -139,7 +174,7 @@ footer {
 
 header {
   min-height: 90px;
-  background-color: @primary-background-color;
+  background-color: @darkest-color;
 }
 
 .navmenu  {
@@ -151,7 +186,7 @@ header {
 }
 
 .navmenu-brand {
-  margin: 0;
+  margin: 0 0 0 15px;
 }
 
 .nav.navmenu-nav {
@@ -167,14 +202,11 @@ header {
   display: block;
   text-align: center;
 }
-.navbar-brand {
-  display: inline-block;
-  float: none;
-}
+
 .navbar-toggle {
   position: absolute;
   float: left;
-  margin-left: 15px;
+  margin: 14px 0 0 23px;
 }
 
 .container {
@@ -185,12 +217,11 @@ header {
   display: inline-block;
 }
 
-@media screen and (max-width: 992px) {
-  .navbar-inverse {
-    .navbar-nav {
-      margin-left: 0;
-    }
+@media screen and (max-width: 600px) {
+  .nav.main-menu {
+    margin-top: 8px;
   }
+
 }
 
 @media screen and (max-width: 992px) {
@@ -204,7 +235,13 @@ header {
   }
 
   .navmenu {
-    background-color: @primary-background-color;
+    background-color: @darkest-color;
+  }
+
+  .navbar-inverse {
+    .navbar-nav {
+      margin-left: 0;
+    }
   }
 }
 
@@ -215,9 +252,6 @@ header {
 }
 
 @media (min-width: 992px) {
-  body {
-    padding: 0 0 0 300px;
-  }
   .navmenu {
     padding-top: 0;
   }
@@ -230,4 +264,22 @@ header {
   .container {
     width: 100%;
   }
+}
+
+
+/* Product Info */
+
+.product-name {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 3.8rem;
+  font-weight: 800;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.prod-sku {
+  color: #8b8b8b;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: normal;
+  font-size: 1.2rem;
 }

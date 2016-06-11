@@ -6,9 +6,9 @@
     'use strict';
     angular
         .module('fenderApp')
-        .factory('productCatalogService', ["$resource", "$filter", productCatalogService]);
+        .factory('productCatalogService', ["$resource", productCatalogService]);
 
-    function productCatalogService ($resource, $filter) {
+    function productCatalogService ($resource) {
         return {
             getProductCatalog: function () {
                 return $resource('/api/products/:id');

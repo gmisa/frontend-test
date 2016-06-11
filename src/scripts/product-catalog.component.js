@@ -9,12 +9,12 @@
 
     module.component("productCatalog", {
         templateUrl: "product-catalog.component.html",
-        controller: ["$scope", "$filter", "productCatalogService", ProductCatalogController],
+        controller: ["productCatalogService", ProductCatalogController],
         controllerAs: "vm"
     });
 
 
-    function ProductCatalogController($scope, $filter, productCatalogService) {
+    function ProductCatalogController(productCatalogService) {
         var vm = this;
 
         var productsCatalog = productCatalogService.getProductCatalog();
