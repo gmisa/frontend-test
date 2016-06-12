@@ -17,7 +17,6 @@
                 template: '<product-info></product-info>'
             })
         .otherwise({ redirectTo: '/' });
-           
 
         $locationProvider.html5Mode(true);
     }

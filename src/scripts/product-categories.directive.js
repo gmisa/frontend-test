@@ -42,14 +42,14 @@
 
             if (cat) {
                 if (!childId) { //Only prodType was checked
-                    _.each(cat.subTypes, function (s) {
+                    _.each(cat.seriesInfo, function (s) {
                         s.selected = cat.selected;  //check/uncheck all subtypes
                     });
                 }
                 else {
-                    var subCatCount = cat.subTypes.length;
+                    var subCatCount = cat.seriesInfo.length;
 
-                    var subCatChecked = _.filter(cat.subTypes, function(s) {
+                    var subCatChecked = _.filter(cat.seriesInfo, function(s) {
                         return s.selected === true;
                     });
 

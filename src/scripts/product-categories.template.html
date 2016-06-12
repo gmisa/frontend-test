@@ -5,8 +5,8 @@
             <li ng-repeat="productType in vm.categories">
                 <input type="checkbox" ng-model="productType.selected" ng-change="vm.toggleFilter(productType.prodTypeId)"><label>{{productType.productType}}</label>
                 <ul class="product-filters">
-                    <li ng-repeat="productSubType in productType.subTypes">
-                        <input type="checkbox" ng-model="productSubType.selected" ng-change="vm.toggleFilter(productType.prodTypeId, productSubType.prodSubTypeId)"><label>{{productSubType.productSubType}}</label>
+                    <li ng-repeat="productSeries in productType.seriesInfo">
+                        <input type="checkbox" ng-model="productSeries.selected" ng-change="vm.toggleFilter(productType.prodTypeId, productSeries.seriesId)"><label>{{productSeries.series}}</label>
                     </li>
                 </ul>
             </li>

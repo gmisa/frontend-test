@@ -33,5 +33,7 @@
     ProductItemController.$inject = ["productCatalogService"];
     function ProductItemController(productCatalogService) {
         var vm = this;
+        
+        
     }
 }());

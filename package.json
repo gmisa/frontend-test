@@ -2,6 +2,7 @@
   "name": "frontend-test",
   "version": "0.0.1",
   "devDependencies": {
+    "angular-mocks": "^1.5.6",
     "del": "^2.2.0",
     "ejs": "^2.4.2",
     "express": "^4.13.4",
@@ -17,6 +18,11 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-ejs-preprocessor": "^0.2.0",
+    "karma-jasmine": "^1.0.2",
     "require-dir": "^0.3.0"
   },
   "dependencies": {

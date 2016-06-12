@@ -6,6 +6,7 @@ var express = require('express');
 var app = express();
 var fs = require('fs');
 var products = require('./products.json');
+var path = require('path');
 var _ = require('underscore');
 
 var port = process.env.PORT || 5000;
@@ -14,11 +15,25 @@ app.listen(port, function() {
     console.log("Listening on " + port);
 });
 
-app.use(express.static('dist'));
+app.use(express.static(path.join(__dirname, 'dist')));
 app.set('views', './dist');
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
+    res.render('index', {
+        'title': "Fender: The Spirit of Rock 'n' Roll since 1946",
+        'description': "Experience Fender: The spirit of rock-n-roll since 1946. Shop Fender guitars, basses, amplifiers, audio equipment, accessories, apparel and more."
+    });
+});
+
+app.get('/products/:id', function(req, res) {
+    res.render('index', {
+        'title': "Fender: The Spirit of Rock 'n' Roll since 1946",
+        'description': "Experience Fender: The spirit of rock-n-roll since 1946. Shop Fender guitars, basses, amplifiers, audio equipment, accessories, apparel and more."
+    });
+});
+
+app.get('/products', function(req, res) {
     res.render('index', {
         'title': "Fender: The Spirit of Rock 'n' Roll since 1946",
         'description': "Experience Fender: The spirit of rock-n-roll since 1946. Shop Fender guitars, basses, amplifiers, audio equipment, accessories, apparel and more."
@@ -32,7 +47,7 @@ app.get('/api/products', function(req, res) {
 app.get('/api/products/:id', function(req, res) {
     var id = req.params.id;
     
-    var product = products.documents.filter(function(item) {
+    var product = products.documents.find(function(item) {
         return item.productNo === id;
     });
     
@@ -48,10 +63,11 @@ app.get('/api/producttypes', function(req, res) {
     .value();
 
     _.each(products.documents, function(element, index, list){
-        var subType = {};
-        subType['prodSubTypeId'] = element.prodSubTypeId;
-        subType['productSubType']  = element.productSubType;
-        subType.selected = true;
+        var seriesInfo = {};
+
+        seriesInfo.seriesId = element.seriesId;
+        seriesInfo.series = element.series;
+        seriesInfo.selected = true;
 
         var prodType = _.find(productTypes, function(item) {
             return item.prodTypeId === element.prodTypeId;
@@ -59,12 +75,13 @@ app.get('/api/producttypes', function(req, res) {
 
         if (prodType) {
             prodType.selected = true;
-            if (!prodType.subTypes) {
-                prodType.subTypes = [];
+
+            if (!prodType.seriesInfo) {
+                prodType.seriesInfo = [];
             }
 
-            if (!_.findWhere(prodType.subTypes, {'prodSubTypeId': subType.prodSubTypeId})) {
-                prodType.subTypes.push(subType);
+            if (!_.findWhere(prodType.seriesInfo, {'seriesId': seriesInfo.seriesId})) {
+                prodType.seriesInfo.push(seriesInfo);
             }
         }
     });

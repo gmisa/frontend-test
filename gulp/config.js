@@ -47,7 +47,7 @@ module.exports = {
             ]
         },
         'common': {
-            scripts: src + '/scripts/*.js',
+            scripts: [src + '/scripts/*.js', '!' + src + '/scripts/*spec.js'],
             css: src + '/styles/common.css'
         },
         'angular-bundle': {
@@ -70,5 +70,5 @@ module.exports = {
             src: './bower_components/bootstrap/dist/fonts',
             dest: dest + '/fonts'
         }
-    },
+    }
 };

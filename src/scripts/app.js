@@ -24,9 +24,9 @@
                 _.each(categories, function(productType) {
                     if (productType.selected) {
 
-                        _.each(productType.subTypes, function(subProduct) {
+                        _.each(productType.seriesInfo, function(s) {
                             _.each(products, function(product) {
-                                if (product.prodSubTypeId === subProduct.prodSubTypeId && subProduct.selected) {
+                                if (product.seriesId === s.seriesId && s.selected) {
                                     filteredProducts.push(product);
                                 }
                             });

@@ -4,7 +4,6 @@
 html { font-size: 62.5%; }
 
 body {
-  font-family: 'Open Sans', sans-serif;
   background-color: @primary-background-color;
   padding: 0;
   &.product-catalog {
@@ -278,8 +277,42 @@ header {
 }
 
 .prod-sku {
-  color: #8b8b8b;
+  color: @light-gray-color;
   font-family: 'Open Sans', sans-serif;
   font-weight: normal;
   font-size: 1.2rem;
+}
+
+/* search */
+
+header input[type="text"] {
+  padding-left: 15px;
+  color: @search-text-color;
+  border: none;
+  text-overflow: ellipsis;
+  text-transform: none;
+  font-style: italic;
+  font-weight: 700;
+  background-color: @secondary-background-color;
+  height: 3.2rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2rem;
+  width: 230px;
+}
+
+header .search-container button {
+  position: absolute;
+  width: 33px;
+  border: none;
+  height: 3.2rem;
+  line-height: 3.2rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: @secondary-background-color;
+  background-color: @logo-background-color;
+}
+
+header .search-container {
+  position: relative;
+  margin-top: 22px;
 }

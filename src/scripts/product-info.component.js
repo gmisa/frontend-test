@@ -20,13 +20,16 @@
         var prodId = $routeParams.id;
         
         if (prodId) {
-            var product = _.find(productCatalogService.products, function(item) {
-                return item.productNo === prodId;
-            });
+
+            var productsCatalog = productCatalogService.getProductCatalog();
             
-            if (product) {
-                vm.product = product;
-            }
+            productsCatalog.get({id:prodId})
+                .$promise
+                .then(getProductSuccess);
+        }
+
+        function getProductSuccess(result) {
+            vm.product = result;
         }
     }
 
