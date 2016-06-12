@@ -12,7 +12,7 @@ var sourcemaps = require('gulp-sourcemaps');
 
 /* VENDOR JS */
 
-gulp.task('concat-vendor-js-dev', ['clean', 'optimize-images', 'copy-font-bootstrap', 'copy-font-fontawesome', 'less'], function () {
+gulp.task('concat-vendor-js-dev', ['clean', 'copy-index', 'optimize-images', 'copy-font-bootstrap', 'copy-font-fontawesome', 'less'], function () {
     return gulp.src(config.concat['vendor'].scripts)
         .pipe(sourcemaps.init())
         .pipe(uglify())
@@ -27,7 +27,7 @@ gulp.task('concat-vendor-js-dev', ['clean', 'optimize-images', 'copy-font-bootst
 
 
 
-gulp.task('concat-vendor-js-prod', ['clean', 'optimize-images', 'copy-font-bootstrap', 'copy-font-fontawesome', 'less'], function () {
+gulp.task('concat-vendor-js-prod', ['clean', 'copy-index', 'optimize-images', 'copy-font-bootstrap', 'copy-font-fontawesome', 'less'], function () {
     return gulp.src(config.concat['vendor'].scripts)
         .pipe(uglify())
         .pipe(concat({ path: 'vendor.js', cwd: '' }))
@@ -40,7 +40,7 @@ gulp.task('concat-vendor-js-prod', ['clean', 'optimize-images', 'copy-font-boots
 
 /* VENDOR CSS */
 
-gulp.task('concat-vendor-css-dev', ['clean', 'optimize-images', 'copy-font-bootstrap', 'copy-font-fontawesome', 'less', 'concat-vendor-js-dev'], function () {
+gulp.task('concat-vendor-css-dev', ['clean', 'copy-index', 'optimize-images', 'copy-font-bootstrap', 'copy-font-fontawesome', 'less', 'concat-vendor-js-dev'], function () {
     return gulp.src(config.concat['vendor'].css)
         .pipe(concat({ path: 'vendor.css', cwd: '' }))
         .pipe(rev())
@@ -77,7 +77,7 @@ gulp.task('concat-common-js-dev', ['clean','copy-index', 'optimize-images', 'cop
 
 
 gulp.task('concat-common-js-prod', ['clean','copy-index', 'optimize-images', 'copy-font-bootstrap', 'copy-font-fontawesome', 'less', 'concat-vendor-js-prod', 'concat-vendor-css-prod'], function () {
-    return gulp.src(config.concat['vendor'].scripts)
+    return gulp.src(config.concat['common'].scripts)
         .pipe(uglify())
         .pipe(concat({ path: 'common.js', cwd: '' }))
         .pipe(rev())
@@ -99,8 +99,8 @@ gulp.task('concat-common-css-dev', ['clean','copy-index', 'optimize-images', 'co
         .pipe( gulp.dest(config.dist.src + '/rev/styles'));
 });
 
-gulp.task('concat-common-css-prod', ['clean', 'copy-index','optimize-images', 'copy-font-bootstrap', 'copy-font-fontawesome', 'less', 'concat-vendor-js-prod', 'concat-vendor-css-prod', 'concat-common-js-prod'], function () {
-    return gulp.src(config.concat['assets'].css)
+gulp.task('concat-common-css-prod', ['clean','copy-index', 'optimize-images', 'copy-font-bootstrap', 'copy-font-fontawesome', 'less', 'concat-vendor-js-prod', 'concat-vendor-css-prod', 'concat-common-js-prod'], function () {
+    return gulp.src(config.concat['common'].css)
         .pipe(concat({ path: 'common.css', cwd: '' }))
         .pipe(cleanCSS({ keepBreaks: true }))
         .pipe(rev())
@@ -121,7 +121,7 @@ gulp.task('concat-angular-bundle-dev', ['clean', 'copy-index', 'optimize-images'
         .pipe(gulp.dest(config.dist.src + "/rev/scripts")); // write manifest to build dir
 });
 
-gulp.task('concat-angular-bundle-prod', ['clean', 'copy-index','optimize-images', 'copy-font-bootstrap', 'copy-font-fontawesome', 'less', 'concat-vendor-js-prod', 'concat-vendor-css-prod', 'concat-common-js-prod', 'concat-common-css-prod'], function () {
+gulp.task('concat-angular-bundle-prod', ['clean', 'copy-index', 'optimize-images', 'copy-font-bootstrap', 'copy-font-fontawesome', 'less', 'concat-vendor-js-prod', 'concat-vendor-css-prod', 'concat-common-js-prod', 'concat-common-css-prod'], function () {
     return gulp.src(config.concat['angular-bundle'].scripts)
         .pipe(uglify())
         .pipe(concat({ path: 'angular-bundle.js', cwd: '' }))

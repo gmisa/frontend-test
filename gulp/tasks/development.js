@@ -18,5 +18,6 @@ gulp.task('development', [
     'concat-angular-bundle-dev',
     'templateCache-dev',
     'rev-collector-css-dev',
-    'rev-collector-html-dev'
+    'rev-collector-html-dev',
+    'final-cleanup-dev'
 ]);
