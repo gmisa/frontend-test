@@ -11,13 +11,13 @@ gulp.task('production', [
     'copy-font-bootstrap',
     'copy-font-fontawesome',
     'less',
-    'rev-collector-css',
     'concat-vendor-js-prod',
     'concat-vendor-css-prod',
     'concat-common-js-prod',
     'concat-common-css-prod',
     'concat-angular-bundle-prod',
-    'templatecache-prod',
+    'templateCache-prod',
     'rev-collector-css-prod',
-    'rev-collector-html-prod'
+    'rev-collector-html-prod',
+    'final-cleanup-prod'
 ]);
