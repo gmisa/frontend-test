@@ -18,7 +18,8 @@ module.exports = {
         dest: src + '/styles'
     },
     lessPath: [
-        './bower_components'
+        './bower_components/**/*.less',
+        src + '/styles/*.less'
     ],
     images: {
         src: src + '/img',
