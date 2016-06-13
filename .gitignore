@@ -4,6 +4,4 @@
 /dist/*
 .idea/*
 
-/bower.json
-/component.json
 /bower_components
