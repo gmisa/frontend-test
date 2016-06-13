@@ -26,6 +26,8 @@
     "require-dir": "^0.3.0"
   },
   "dependencies": {
+    "ejs": "^2.4.2",
+    "express": "^4.13.4",
     "underscore": "^1.8.3"
   }
 }
