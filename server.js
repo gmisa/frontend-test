@@ -15,8 +15,8 @@ app.listen(port, function() {
     console.log("Listening on " + port);
 });
 
-app.use(express.static(path.join(__dirname, './dist')));
-app.set('views', './dist');
+app.use(express.static(path.join(__dirname, 'dist')));
+app.set('views', path.join(__dirname, 'dist'));
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
