@@ -28,17 +28,20 @@
 
     function linkFn ($scope, element, attrs, ctrl) {
         angular.element('body').addClass('product-catalog');
-    }
 
-    ProductListController.$inject = ["$scope", "productCatalogService"];
-    function ProductListController($scope, productCatalogService) {
-        var vm = this;
-        
         //refresh the product catalog view on change of filter
         $scope.$watch('vm.products', function(newValue, oldValue) {
             if (newValue) {
-                vm.filteredProducts = newValue; 
+                ctrl.filteredProducts = newValue;
+                var height = element.height();
+                angular.element('.navmenu-fixed-left').height(height);
             }
         });
+    }
+
+    ProductListController.$inject = [];
+    function ProductListController() {
+        var vm = this;
+        vm.filteredProducts = vm.products;
     }
 }());
