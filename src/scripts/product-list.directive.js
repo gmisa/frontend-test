@@ -10,7 +10,8 @@
 
     module.directive("productList", productList);
 
-    function productList() {
+    productList.$inject = ['$timeout'];
+    function productList($timeout) {
         return {
             restrict: 'E',
             scope: {
@@ -24,19 +25,22 @@
             templateUrl: 'product-list.template.html',
             link: linkFn
         };
-    }
 
-    function linkFn ($scope, element, attrs, ctrl) {
-        angular.element('body').addClass('product-catalog');
+        function linkFn ($scope, element, attrs, ctrl) {
+            angular.element('body').addClass('product-catalog');
 
-        //refresh the product catalog view on change of filter
-        $scope.$watch('vm.products', function(newValue, oldValue) {
-            if (newValue) {
-                ctrl.filteredProducts = newValue;
-                var height = element.height();
-                angular.element('.navmenu-fixed-left').height(height);
-            }
-        });
+            //refresh the product catalog view on change of filter
+            $scope.$watch('vm.products', function(newValue, oldValue) {
+                if (newValue) {
+                    ctrl.filteredProducts = newValue;
+                    $timeout(function () {
+                        var height = element.height();
+                        angular.element('.navmenu-fixed-left').height(height);
+                    });
+
+                }
+            });
+        }
     }
 
     ProductListController.$inject = [];
