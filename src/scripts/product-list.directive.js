@@ -35,7 +35,7 @@
                     ctrl.filteredProducts = newValue;
                     $timeout(function () {
                         var height = element.height();
-                        angular.element('.navmenu-fixed-left').height(height);
+                        angular.element('.navmenu-fixed-left').height(height + 125);
                     });
 
                 }
